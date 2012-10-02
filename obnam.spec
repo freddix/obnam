@@ -1,7 +1,7 @@
 Summary:	Backup program
 Name:		obnam
 Version:	1.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Applications
 Source0:	http://code.liw.fi/debian/pool/main/o/obnam/%{name}_%{version}.orig.tar.gz
