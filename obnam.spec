@@ -1,11 +1,12 @@
 Summary:	Backup program
 Name:		obnam
 Version:	1.3
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Applications
 Source0:	http://code.liw.fi/debian/pool/main/o/obnam/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	4d5f8d5f04c474fdc7d91860a7f7943d
+Source1:	%{name}.conf
 URL:		http://liw.fi/obnam
 BuildRequires:	python-cliapp
 BuildRequires:	python-devel
@@ -33,10 +34,14 @@ A backup tool.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/var/log
 
 %{__python} setup.py install \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
+
+install -D %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/obnam.conf
+touch $RPM_BUILD_ROOT/var/log/obnam.log
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,6 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/obnamlib/plugins
 %{py_sitedir}/obnamlib/*.py*
 %{py_sitedir}/obnamlib/plugins/*.py*
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/obnam.conf
+%attr(660,root,logs) %ghost /var/log/obnam.log
 %{_mandir}/man1/obnam-benchmark.1*
 %{_mandir}/man1/obnam-viewprof.1*
 %{_mandir}/man1/obnam.1*
