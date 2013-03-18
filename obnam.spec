@@ -1,11 +1,11 @@
 Summary:	Backup program
 Name:		obnam
-Version:	1.3
-Release:	2
+Version:	1.4
+Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	http://code.liw.fi/debian/pool/main/o/obnam/%{name}_%{version}.orig.tar.gz
-# Source0-md5:	4d5f8d5f04c474fdc7d91860a7f7943d
+# Source0-md5:	9e36d47f8e3a441abe9c37ee7051d3ee
 Source1:	%{name}.conf
 URL:		http://liw.fi/obnam
 BuildRequires:	python-cliapp
